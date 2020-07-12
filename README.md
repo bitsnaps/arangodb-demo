@@ -1,3 +1,5 @@
+# ArangoDB v3.6.4 command line tutorial
+
 1. Welcome to the tutorial!
 
 This is a user-interactive tutorial on ArangoDB and the ArangoDB shell.
