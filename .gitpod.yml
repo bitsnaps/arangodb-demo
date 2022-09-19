@@ -1,0 +1,14 @@
+image:
+  file: .gitpod.Dockerfile
+
+# ports:
+# - port: 8080
+#   onOpen: open-preview
+
+tasks:
+- before: >
+    echo "before..."
+  init: >
+    echo "init..."
+  command: >
+    echo "Now you should be able to create a DB using db._createDatabase(demo);"
