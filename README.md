@@ -1,5 +1,8 @@
 # ArangoDB v3.6.4 command line tutorial
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
+
 1. Welcome to the tutorial!
 
 This is a user-interactive tutorial on ArangoDB and the ArangoDB shell.
@@ -7,21 +10,22 @@ It will give you a first look into ArangoDB and how it works.
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> tutorial
-
+```
 
 2. JavaScript Shell
 
 On this shell's prompt, you can issue arbitrary JavaScript commands.
 So you are able to do things like...:
-
+```bash
   number = 123;
   number = number * 10;
+```
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> i = 3;
 3
 
@@ -29,7 +33,7 @@ Type 'tutorial' again to get to the next chapter.
 15
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 3. Shell History
 
@@ -38,18 +42,19 @@ It saves you from retyping 'tutorial' every time for instance.
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> tutorial
-
+```
 
 4. Running Complex Instructions
 
 You can also run more complex instructions, such as for loops:
-
+```bash
   for (var i = 0; i < 10; i++) { number = number + 1; }
+```
 
 Type 'tutorial' again to get to the next chapter.
-
+```bash
 127.0.0.1:8529@demo> i = 15
 15
 
@@ -57,18 +62,19 @@ Type 'tutorial' again to get to the next chapter.
 18
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 5. Printing Results
 
 As you see, the result of the last command executed is printed automatically.
 To explicitly print a value at any other time, there is the print function:
-
+```bash
   for (var i = 0; i < 5; ++i) { print("I am a JavaScript shell"); }
+```
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> print('ok')
 ok
 
@@ -76,40 +82,42 @@ ok
 ok
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 6. Creating Collections
 
 ArangoDB is primarily a document database. This means that we store data as
 documents (which are similar to JavaScript objects) in so-called 'collections'.
 Let's create a collection named 'places' now:
-
+```bash
   db._create('places');
+```
 
 Note: each collection is identified by a unique name. Trying to create a
 collection that already exists will produce an error.
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> db._create('places');
 [ArangoCollection 710, "places" (type document, status loaded)]
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 7. Displaying Collections
 
 Now you can take a look at the collection(s) you just created:
-
+```bash
   db._collections();
+```
 
 Please note that all collections will be returned, including ArangoDB's
 pre-defined system collections.
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> db._collections();
 [ 
   [ArangoCollection 269, "_analyzers" (type document, status loaded)], 
@@ -126,23 +134,24 @@ Type 'tutorial' again to get to the next chapter.
 ]
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 8. Accessing a single collection
 
 If you want to access a particular collection, you can either write:
-
+```bash
   db.places;
-
+```
 or the more elaborate alternative:
-
+```bash
   db._collection('places');
+```
 
 Both return a collection object (if the specified collection exists).
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> db.places;
 [ArangoCollection 710, "places" (type document, status loaded)]
 
@@ -150,20 +159,20 @@ Type 'tutorial' again to get to the next chapter.
 [ArangoCollection 710, "places" (type document, status loaded)]
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 9. Creating Documents
 
 We have a collection, but it is empty. So let's create some documents!
-
+```bash
   db.places.save({ _key : "foo", city : "foo-city" });
   for (var i = 0; i <= 10; i++) {
     db.places.save({ _key: "example" + i, zipcode: i })
   };
+```
 
 Type 'tutorial' again to get to the next chapter.
-
-
+```bash
 127.0.0.1:8529@demo> db.places.save({_key: 'foo', city: 'foo-city'});
 { 
   "_id" : "places/foo", 
@@ -184,17 +193,17 @@ Type 'tutorial' again to get to the next chapter.
 [ArangoCollection 710, "places" (type document, status loaded)]
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 10. Displaying All Documents
 
 You want to take a look at your documents? No problem:
-
+```bash
   db.places.toArray();
+```
 
 Type 'tutorial' again to get to the next chapter.
-
-
+```bash
 127.0.0.1:8529@demo> db.places.toArray();
 [ 
   { 
@@ -272,17 +281,18 @@ Type 'tutorial' again to get to the next chapter.
 ]
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 11. Counting Documents
 
 To see how many documents there are in a collection, use the 'count' method:
-
+```bash
   db.places.count();
+```
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> db.places.
 db.places._appendBoolParameter()      db.places.firstExample()
 db.places._appendSyncParameter()      db.places.fulltext()
@@ -313,20 +323,20 @@ db.places.compact()  db.places.count()
 12
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 12. Retrieving Single Documents
 
 As you can see, each document has some meta attributes '_id', '_key' and '_rev'.
 The '_key' attribute can be used to quickly retrieve a single document from
 a collection:
-
+```bash
   db.places.document("foo");
   db.places.document("example5");
+```
 
 Type 'tutorial' again to get to the next chapter.
-
-
+```bash
 127.0.0.1:8529@demo> db.places.document('foo');
 { 
   "_key" : "foo", 
@@ -336,19 +346,20 @@ Type 'tutorial' again to get to the next chapter.
 }
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 13. Retrieving Single Documents
-
+```bash
 The '_id' attribute can also be used to retrieve documents using the
 'db' object:
 
   db._document("places/foo");
   db._document("places/example5");
+```
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> db.places.document('places/foo');
 { 
   "_key" : "foo", 
@@ -366,13 +377,13 @@ Type 'tutorial' again to get to the next chapter.
 }
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 14. Modifying Documents
 
 You can modify existing documents. Try to add a new attribute to a document and
 verify whether it has been added:
-
+```bash
   db._update("places/foo", { zipcode: 39535 });
   db._document("places/foo");
 
@@ -460,23 +471,24 @@ db._registerView()        db._replace()
 10
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 17. Searching Documents
 
 Searching for documents with specific attributes can be done by using the
-'byExample' method:
-
+`byExample` method:
+```bash
   db._create("users");
   for (var i = 0; i < 10; ++i) {
     db.users.save({ name: "username" + i, active: (i % 3 == 0), age: 30 + i });
   }
   db.users.byExample({ active: false }).toArray();
   db.users.byExample({ name: "username3", active: true }).toArray();
+```
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> db._create('users');
 [ArangoCollection 1059, "users" (type document, status loaded)]
 
@@ -568,18 +580,18 @@ SimpleQueryByExample(places)
 
 127.0.0.1:8529@demo> 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 18. Running AQL Queries
 
 ArangoDB also provides a query language (AQL) for more complex matching:
-
+```bash
   db._query(`
     FOR u IN users
       FILTER u.active == true && u.age >= 33
       RETURN { username: u.name, age: u.age }
   `).toArray();
-
+```
 Wrapping multi-line queries in backticks is the most convenient way in
 today's JavaScript.
 
@@ -588,7 +600,7 @@ https://www.arangodb.com/docs/stable/
 
 Type 'tutorial' again to get to the next chapter.
 
-
+```bash
 127.0.0.1:8529@demo> db._query(`
 ...> FOR u iN users
 ...>   FILTER u.active == true && u.age >= 33
@@ -610,31 +622,30 @@ Type 'tutorial' again to get to the next chapter.
 ]
 
 127.0.0.1:8529@demo> tutorial
-
+```
 
 19. Using Databases
 
 By default, the ArangoShell connects to the default database.
 The default database is named '_system'. To create another database, use the
-'_createDatabase' method of the 'db' object. To switch to an existing database,
-use '_useDatabase':
-
+'_createDatabase' method of the 'db' object. To switch to an existing database, use '_useDatabase':
+```bash
   db._createDatabase("mydb");
   db._useDatabase("mydb");
+```
 
 Type 'tutorial' again to get to the next chapter.
-
-
+```bash
 127.0.0.1:8529@demo> tutorial
-
+```
 
 20. Removing Databases
 
 To get rid of a database and all of its collections, use '_dropDatabase'.
 It needs to be called from within the '_system' database:
-
+```bash
   db._useDatabase("_system");
   db._dropDatabase("mydb");
+```
 
 Congratulations! You finished the tutorial.
-
