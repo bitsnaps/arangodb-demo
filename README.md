@@ -1,7 +1,8 @@
-# ArangoDB v3.6.4 command line tutorial
+# ArangoDB command line tutorial
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
+Tested on ArangoDB Community Edition v3.6.4.
 
 1. Welcome to the tutorial!
 
