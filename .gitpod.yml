@@ -2,13 +2,14 @@ image:
   file: .gitpod.Dockerfile
 
 ports:
-- port: 8592
+- port: 8529
   onOpen: open-preview
 
 tasks:
 - before: >
     echo "before..."
   init: >
-    echo "init..."
+    echo "Run a docker container..."
+    docker run -e ARANGO_NO_AUTH=1 -p 8529:8529 -d -v /tmp/arangodb:/var/lib/arangodb3 arangodb
   command: >
     echo "Now you should be able to create a DB using db._createDatabase(demo);"
