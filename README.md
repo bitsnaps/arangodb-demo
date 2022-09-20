@@ -4,6 +4,14 @@
 
 Tested on ArangoDB Community Edition v3.6.4.
 
+Before running commands on the shell, make sure ArangoDB is installed and running on port (by default): `8529`.
+
+You run ArangoDB shell, using the following command:
+```bash
+arangosh --server.username root
+```
+where `root` the username used to install ArangoDB.
+
 1. Welcome to the tutorial!
 
 This is a user-interactive tutorial on ArangoDB and the ArangoDB shell.

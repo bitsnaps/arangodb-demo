@@ -9,7 +9,11 @@ tasks:
 - before: >
     echo "before..."
   init: >
-    echo "Run a docker container..."
-    docker run -e ARANGO_NO_AUTH=1 -p 8529:8529 -d -v /tmp/arangodb:/var/lib/arangodb3 arangodb
+    echo "ArangoDB now is installed, you run a secure installation by running: arango-secure-installation"
+    echo "You can run arango daemon by running: arangod"
+    echo "You can run arango shell by running: arangosh"
+    echo "or connect using existing user by running:  arangosh --server.username root"
+    echo "You can connect to existing running server using: arangosh --server.username "root@example" --server.database example"
   command: >
+    docker run -e ARANGO_NO_AUTH=1 -p 8529:8529 -d -v /tmp/arangodb:/var/lib/arangodb3 arangodb
     echo "Now you should be able to create a DB using db._createDatabase(demo);"
